@@ -12,6 +12,8 @@ import requests as req
 from bs4 import BeautifulSoup
 from pprint import pprint
 import re
+from random import randint
+from time import sleep
 
 def main():
   keyword = 'cat'
@@ -25,9 +27,11 @@ def getIcon(keyword, pagenum):
   if content:
     for index, item in enumerate(content.find_all("div" , "k_left")): # div.k_left 包含png, ico, icns三条可下载链接
       url = item.find(href=re.compile("png")).get('href') 
+      print(url)
       r = req.get(url)
       with open("icon/%(page)s-%(num)d.png" % {'page': pagenum, 'num': index}, "wb") as code: # 将图片存入当前路径中的icon目录下
         code.write(r.content)
+      sleep(randint(2,10)) # sleep (2 ~ 10) seconds after every request
     print('第%s页下载完成' % pagenum)
     nextPage = cur_str.find(id="nextPage")
     if nextPage: # 存在下一页

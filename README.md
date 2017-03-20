@@ -1,7 +1,7 @@
 # Learn Python
 
 ## 170319-Easy-icon
-- keywords: requests BeautifulSoup pprint
+- keywords: requests BeautifulSoup pprint re random time
 - result: scraping png url and download to the specify folder
 
 ## 170312-Lagou-recruit
